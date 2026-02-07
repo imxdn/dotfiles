@@ -1,0 +1,41 @@
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	features = rose-pine
+	line-numbers = true
+	side-by-side = true
+
+[delta "rose-pine"]
+	dark = true
+	syntax-theme = base16
+	file-style = "#e0def4"
+	file-decoration-style = "#6e6a86" ul
+	file-added-label = [+]
+	file-modified-label = [*]
+	file-removed-label = [-]
+	file-renamed-label = [→]
+	hunk-header-decoration-style = "#26233a" box
+	hunk-header-file-style = "#908caa"
+	hunk-header-line-number-style = "#f6c177"
+	hunk-header-style = file line-number syntax
+	line-numbers-minus-style = "#eb6f92"
+	line-numbers-plus-style = "#31748f"
+	line-numbers-left-style = "#6e6a86"
+	line-numbers-right-style = "#6e6a86"
+	line-numbers-zero-style = "#908caa"
+	minus-style = syntax "#3b2736"
+	minus-emph-style = syntax "#4d2e3d"
+	plus-style = syntax "#233b43"
+	plus-emph-style = syntax "#2a4952"
+	zero-style = syntax
+	whitespace-error-style = "#eb6f92" reverse
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default

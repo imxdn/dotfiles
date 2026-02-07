@@ -9,6 +9,9 @@ CONFIGS=(
     "mise"
     "ghostty"
     "starship"
+    "git"
+    "lazygit"
+    "yazi"
 )
 
 echo "==> Creating symlinks with stow..."
