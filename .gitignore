@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Backup files
+*.bak
+*~
+
+# Generated/downloaded files
+tmux/.config/tmux/plugins/
+zsh/.config/zsh/.zim/
+zsh/.config/zsh/.zcompdump*
+zsh/.config/zsh/.zsh_history

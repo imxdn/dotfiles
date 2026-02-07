@@ -1,0 +1,11 @@
+# Fonts
+font-family = MonaspiceAr Nerd Font Mono
+font-size = 16
+font-thicken
+
+# Appearance
+theme = Rose Pine
+macos-titlebar-style = tabs
+
+# Link handling
+link-url
