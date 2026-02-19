@@ -4,52 +4,31 @@ set -e
 
 echo "==> Running package installation..."
 
-# Nix packages
-NIX_PACKAGES=(
-  bat
-  eza
-  fd
-  ripgrep
-  lazygit
-  yazi
-  zoxide
-  delta
-  fzf
-  neovim
-  starship
-  tmux
-  mise
-  unison
-  fish
-  stow
-)
+# Update mode
+if [ "$1" = "update" ]; then
+  echo "==> Updating nix flake..."
+  nix flake update --flake ~/.dotfiles
+  nix profile upgrade '.*'
+  echo "==> Updating mise..."
+  mise self-update
+  echo "==> Updates complete!"
+  exit 0
+fi
 
-# Nix fonts
-NIX_FONTS=(
-  nerd-fonts.monaspace
-)
+echo "==> Installing packages via Nix flake..."
+if nix profile list | grep -q "dotfiles-packages"; then
+  echo "    - Nix packages already installed"
+else
+  nix profile install ~/.dotfiles
+fi
 
-echo "==> Installing CLI tools via Nix..."
-installed=$(nix profile list | awk '/^Name:/ {print $2}')
-for pkg in "${NIX_PACKAGES[@]}"; do
-  if echo "$installed" | grep -qx "$pkg"; then
-    echo "    - $pkg already installed"
-  else
-    echo "    - Installing $pkg"
-    nix profile install "nixpkgs#$pkg"
-  fi
-done
-
-echo "==> Installing fonts via Nix..."
-for font in "${NIX_FONTS[@]}"; do
-  font_name="${font##*.}"
-  if echo "$installed" | grep -qx "$font_name"; then
-    echo "    - $font already installed"
-  else
-    echo "    - Installing $font"
-    nix profile install "nixpkgs#$font"
-  fi
-done
+echo "==> Installing mise..."
+if [ -f "$HOME/.local/bin/mise" ]; then
+  echo "    - mise already installed"
+else
+  curl https://mise.run | sh
+  echo "    - mise installed"
+fi
 
 echo "==> Installing TPM (Tmux Plugin Manager)..."
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then

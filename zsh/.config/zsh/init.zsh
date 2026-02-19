@@ -2,6 +2,7 @@
 
 # Zim setup
 ZIM_HOME="${HOME}/.config/zsh/.zim"
+ZIM_CONFIG_FILE="${HOME}/.config/zsh/.zimrc"
 
 # Download zimfw plugin manager if missing
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
@@ -15,7 +16,7 @@ if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
 fi
 
 # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${HOME}/.config/zsh/.zimrc ]]; then
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE} ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
 fi
 
