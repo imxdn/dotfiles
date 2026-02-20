@@ -4,7 +4,7 @@ font-size = 16
 font-thicken
 
 # Appearance
-theme = Rose Pine
+theme = Ayu
 macos-titlebar-style = tabs
 
 # Link handling

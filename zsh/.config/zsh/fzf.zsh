@@ -16,20 +16,20 @@ export FZF_DEFAULT_OPTS=" \
   --multi \
   --cycle \
   --preview-window=right:50%:wrap \
-  --color=fg:#908caa \
-  --color=bg:#191724 \
-  --color=hl:#ebbcba \
-  --color=fg+:#e0def4 \
-  --color=bg+:#26233a \
-  --color=hl+:#ebbcba \
-  --color=border:#403d52 \
-  --color=header:#31748f \
-  --color=gutter:#191724 \
-  --color=spinner:#f6c177 \
-  --color=info:#9ccfd8 \
-  --color=pointer:#c4a7e7 \
-  --color=marker:#eb6f92 \
-  --color=prompt:#908caa"
+  --color=fg:#BFBDB6 \
+  --color=bg:#0D1017 \
+  --color=hl:#FFB454 \
+  --color=fg+:#BFBDB6 \
+  --color=bg+:#10141C \
+  --color=hl+:#FFB454 \
+  --color=border:#1B1F29 \
+  --color=header:#59C2FF \
+  --color=gutter:#0D1017 \
+  --color=spinner:#FF8F40 \
+  --color=info:#95E6CB \
+  --color=pointer:#D2A6FF \
+  --color=marker:#F07178 \
+  --color=prompt:#AAD94C"
 
 # Widget options
 export FZF_CTRL_T_OPTS="--walker-skip .git,node_modules,target \

@@ -5,32 +5,33 @@
 	diffFilter = delta --color-only
 
 [delta]
-	features = rose-pine
+	features = ayu-dark
 	line-numbers = true
 	side-by-side = true
 
-[delta "rose-pine"]
+[delta "ayu-dark"]
 	dark = true
+	syntax-theme = ayu-dark
 	syntax-theme = base16
-	file-style = "#e0def4"
-	file-decoration-style = "#6e6a86" ul
+	file-style = "#BFBDB6"
+	file-decoration-style = "#5A6378" ul
 	file-added-label = [+]
 	file-modified-label = [*]
 	file-removed-label = [-]
 	file-renamed-label = [→]
-	hunk-header-decoration-style = "#26233a" box
-	hunk-header-file-style = "#908caa"
-	hunk-header-line-number-style = "#f6c177"
+	hunk-header-decoration-style = "#0D1017" box
+	hunk-header-file-style = "#5A6673"
+	hunk-header-line-number-style = "#FFB454"
 	hunk-header-style = file line-number syntax
-	line-numbers-minus-style = "#eb6f92"
-	line-numbers-plus-style = "#31748f"
-	line-numbers-left-style = "#6e6a86"
-	line-numbers-right-style = "#6e6a86"
-	line-numbers-zero-style = "#908caa"
-	minus-style = syntax "#3b2736"
-	minus-emph-style = syntax "#4d2e3d"
-	plus-style = syntax "#233b43"
-	plus-emph-style = syntax "#2a4952"
+	line-numbers-minus-style = "#F07178"
+	line-numbers-plus-style = "#AAD94C"
+	line-numbers-left-style = "#5A6378"
+	line-numbers-right-style = "#5A6378"
+	line-numbers-zero-style = "#5A6673"
+	minus-style = syntax "#3d1f24"
+	minus-emph-style = syntax "#4d2730"
+	plus-style = syntax "#1f3d28"
+	plus-emph-style = syntax "#274d32"
 	zero-style = syntax
 	whitespace-error-style = "#eb6f92" reverse
 

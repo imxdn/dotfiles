@@ -38,13 +38,13 @@ else
   echo "    - TPM installed"
 fi
 
-echo "==> Installing Yazi rose-pine flavor..."
+echo "==> Installing Yazi ayu-dark flavor..."
 if command -v ya &> /dev/null; then
-  if ya pkg list 2>/dev/null | grep -q "rose-pine"; then
-    echo "    - Yazi rose-pine flavor already installed"
+  if ya pkg list 2>/dev/null | grep -q "ayu-dark"; then
+    echo "    - Yazi ayu-dark flavor already installed"
   else
-    ya pkg add Mintass/rose-pine
-    echo "    - Yazi rose-pine flavor installed"
+    ya pkg add BennyOe/ayu-dark
+    echo "    - Yazi ayu-dark flavor installed"
   fi
 else
   echo "    - Warning: 'ya' command not found, skipping yazi flavor installation"
