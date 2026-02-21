@@ -14,3 +14,4 @@ tmux/.config/tmux/plugins/
 zsh/.config/zsh/.zim/
 zsh/.config/zsh/.zcompdump*
 zsh/.config/zsh/.zsh_history
+flake.lock

@@ -14,11 +14,8 @@ echo "==> Setup complete! Restart your shell."
 [tasks.install]
 run = """
 echo "==> Installing packages via Nix flake..."
-if nix profile list | grep -q "dotfiles-packages"; then
-  echo "    - Nix packages already installed"
-else
-  nix profile install ~/.dotfiles
-fi
+nix profile remove env 2>/dev/null
+nix profile install ~/.dotfiles
 
 echo "==> Installing TPM (Tmux Plugin Manager)..."
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
@@ -26,18 +23,6 @@ if [ -d "$HOME/.tmux/plugins/tpm" ]; then
 else
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   echo "    - TPM installed"
-fi
-
-echo "==> Installing Yazi ayu-dark flavor..."
-if command -v ya &> /dev/null; then
-  if ya pkg list 2>/dev/null | grep -q "ayu-dark"; then
-    echo "    - Yazi ayu-dark flavor already installed"
-  else
-    ya pkg add BennyOe/ayu-dark
-    echo "    - Yazi ayu-dark flavor installed"
-  fi
-else
-  echo "    - Warning: 'ya' command not found, skipping yazi flavor installation"
 fi
 
 echo "==> Packages installed!"
@@ -58,7 +43,9 @@ echo "==> Symlinks created!"
 run = """
 echo "==> Updating nix flake..."
 nix flake update --flake ~/.dotfiles
-nix profile upgrade '.*'
+nix profile upgrade env --refresh
+echo "==> Cleaning old packages..."
+nix-collect-garbage -d
 echo "==> Updating mise..."
 mise self-update
 echo "==> Updates complete!"
