@@ -23,10 +23,40 @@ fi
 # Initialize modules
 source ${ZIM_HOME}/init.zsh
 
+# Emacs key bindings
+bindkey -e
+
+# History settings
+HISTSIZE=50000
+SAVEHIST=50000
+setopt EXTENDED_HISTORY          # Write timestamp
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicates first
+setopt HIST_IGNORE_DUPS          # Don't record duplicates
+setopt HIST_IGNORE_SPACE         # Ignore commands starting with space
+setopt HIST_VERIFY               # Show before executing history command
+setopt SHARE_HISTORY             # Share history between sessions
+
+# Directory navigation
+setopt AUTO_CD                   # Type directory name to cd
+setopt AUTO_PUSHD                # Make cd push old dir onto stack
+setopt PUSHD_IGNORE_DUPS         # Don't push duplicates
+setopt PUSHD_SILENT              # Don't print stack after pushd/popd
+
+# Globbing
+setopt EXTENDED_GLOB             # Use extended globbing (#, ~, ^)
+setopt GLOB_DOTS                 # Include dotfiles in globs
+
+# Environment variables
+export EDITOR="nvim"
+export VISUAL="nvim"
+export PAGER="less"
+export LESS="-R -F -X"           # Raw color codes, quit if one screen, no init
+
 # Source modular configs
 source ~/.config/zsh/fzf.zsh
+source ~/.config/zsh/aliases.zsh
 
-# Source aliases if available
+# Source system-specific aliases if available
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 # AWS CLI completion

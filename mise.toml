@@ -1,33 +1,23 @@
-#!/bin/bash
-
-set -e
-
-echo "==> Running package installation..."
-
-# Update mode
-if [ "$1" = "update" ]; then
-  echo "==> Updating nix flake..."
-  nix flake update --flake ~/.dotfiles
-  nix profile upgrade '.*'
-  echo "==> Updating mise..."
-  mise self-update
-  echo "==> Updates complete!"
-  exit 0
+[tasks.setup]
+run = """
+mise run install
+mise run link
+if ! grep -q "source ~/.config/zsh/init.zsh" ~/.zshrc 2>/dev/null; then
+    echo "source ~/.config/zsh/init.zsh" >> ~/.zshrc
+    echo "    - Added source line to ~/.zshrc"
+else
+    echo "    - Source line already exists in ~/.zshrc"
 fi
+echo "==> Setup complete! Restart your shell."
+"""
 
+[tasks.install]
+run = """
 echo "==> Installing packages via Nix flake..."
 if nix profile list | grep -q "dotfiles-packages"; then
   echo "    - Nix packages already installed"
 else
   nix profile install ~/.dotfiles
-fi
-
-echo "==> Installing mise..."
-if [ -f "$HOME/.local/bin/mise" ]; then
-  echo "    - mise already installed"
-else
-  curl https://mise.run | sh
-  echo "    - mise installed"
 fi
 
 echo "==> Installing TPM (Tmux Plugin Manager)..."
@@ -51,3 +41,25 @@ else
 fi
 
 echo "==> Packages installed!"
+"""
+
+[tasks.link]
+run = """
+echo "==> Creating symlinks with stow..."
+cd ~/.dotfiles
+for config in bat ghostty git lazygit mise starship tmux yazi zsh; do
+    stow -R "$config"
+    echo "    - Stowed $config"
+done
+echo "==> Symlinks created!"
+"""
+
+[tasks.update]
+run = """
+echo "==> Updating nix flake..."
+nix flake update --flake ~/.dotfiles
+nix profile upgrade '.*'
+echo "==> Updating mise..."
+mise self-update
+echo "==> Updates complete!"
+"""
