@@ -20,11 +20,11 @@ if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE} ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
 fi
 
-# Initialize modules
-source ${ZIM_HOME}/init.zsh
-
 # Emacs key bindings
 bindkey -e
+
+# Initialize modules
+source ${ZIM_HOME}/init.zsh
 
 # History settings
 HISTSIZE=50000
