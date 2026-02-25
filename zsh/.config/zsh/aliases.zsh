@@ -24,6 +24,13 @@ alias cat='bat --style=auto'
 alias h='history'
 alias c='clear'
 alias q='exit'
+alias v='nvim'
+
+# Tmux
+alias ta='tmux attach -t'
+alias tls='tmux ls'
+alias tn='tmux new -s'
+alias tk='tmux kill-session -t'
 
 # Reload zsh config
 alias reload='source ~/.zshrc'
