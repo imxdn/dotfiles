@@ -16,17 +16,20 @@
             paths = with pkgs; [
               # CLI
               bat
+              btop
+              delta
               eza
               fd
-              ripgrep
               fzf
-              zoxide
-              delta
+              jq
               lazygit
-              yazi
-              stow
-              tmux
+              ripgrep
               starship
+              stow
+              tldr
+              tmux
+              yazi
+              zoxide
 
               # Fonts
               nerd-fonts.monaspace
@@ -36,20 +39,23 @@
 
               # LSP
               lua-language-server          # lua
-              ty                           # python
+              markdown-oxide               # markdown
               rust-analyzer                # rust
+              ty                           # python
               typescript-language-server   # js/ts
               vscode-langservers-extracted # json/html/css
-              markdown-oxide               # markdown
               yaml-language-server         # yaml
 
               # Formatters
-              stylua                       # lua
               prettierd                    # js/ts/json/html/css/md/yaml
+              stylua                       # lua
 
               # Linters
               eslint_d                     # js/ts
               ruff                         # python
+
+              # Tools
+              tree-sitter
             ];
           };
         });
